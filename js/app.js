@@ -61,7 +61,7 @@ function moveNull() {
 
 function playButton(){
   console.log("Clicked Play Button")
-  startTime()
+  startStopTime()
   document.querySelector("#play-btn").disabled = true
   
   
@@ -108,15 +108,15 @@ function render(){
 function tick() {
   timeUp++
   renderTime()
-  
   // starts at 0:00
   // stops at 5:00
   // starts after player clicks on Play button
   
 }
 
-function startTime(){
+function startStopTime(){
   timerInterval = setInterval(tick, 1000)
+  setTimeout(gameOver, 300000)
 }
 
 function renderTime(){
@@ -127,6 +127,7 @@ function renderTime(){
   } else {
     timer.innerHTML = `Time ${mins}:${secs}`
   }
+
   console.log(document.getElementById("timer").innerHTML)
   console.log(timeUp)
   console.log(mins)
@@ -148,9 +149,8 @@ function countMoves() {
 }
 
 function gameOver(){
-  if (mins === 5) {
     document.querySelector("h1").innerText = "Game over! Please click Restart"
-  }
+    clearInterval(timerInterval)
   // compares variables if timeUp = 5:00 disable clicks on game board
   // or if timeDown = 0:00 
   // then show message " You've lost. Please restart the game"
