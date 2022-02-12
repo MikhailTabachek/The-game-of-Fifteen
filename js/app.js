@@ -3,17 +3,20 @@ const winNumberOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, null]
 
 /*--------------------- Variables (state) -----------------------*/
 let randomOrder = []
-let timeUp, timeDown
+let timeDown, timerInterval
+let timeUp = 0
+let mins = 0
+let secs = 0
 
 /*-------------------Cached Element References-------------------*/
-// let timer = document.querySelector("#timer")
+let timer = document.querySelector("#timer")
 
-// let numberOfMoves = document.querySelector("moves")
+let numberOfMoves = document.querySelector("#moves")
 
 /*----------------------Event Listeners--------------------------*/
-document.querySelector("#play-btn").addEventListener("click", () => console.log("Clicked Play Button"))
+document.querySelector("#play-btn").addEventListener("click", playButton)
 
-document.querySelector("#reset-btn").addEventListener("click", () => console.log("Clicked Reset Button"))
+document.querySelector("#reset-btn").addEventListener("click", resetButton)
 
 document.querySelectorAll(".number").forEach(square => {
   square.addEventListener("click", handleClick)
@@ -23,7 +26,6 @@ document.querySelectorAll(".number").forEach(square => {
 
 init()
 function init(){
-  timer = timer.innerHTML = "Time 0:00"
   moves = moves.innerHTML = "Moves 000"
   // set level to easy by default
   // disable clicking on squares
@@ -49,12 +51,22 @@ function moveNull() {
 }
 
 function playButton(){
+  console.log("Clicked Play Button")
+  if(timerInterval) {
+    clearInterval(timerInterval)
+    timerInterval = null
+  } else {
+    startTime()
+  }
+  
   // button is activate when page is loaded
-  // after player click on play it disables and timer starts
+  // after player click on play timer starts and it disables
   // if player clicks on reset, button becomes active again
 }
 
 function resetButton(){
+  
+  console.log("Clicked Reset Button")
   // Reset button always active
   // if clicked, calls init() function
   // enables play button
@@ -83,13 +95,35 @@ function render(){
   // if it matches, call player win function
 }
 
-function timerUp() {
-  //if level set on easy
+function tick() {
+  timeUp++
+  renderTime()
+  
   // starts at 0:00
   // stops at 5:00
   // starts after player clicks on Play button
   
 }
+
+function startTime(){
+  timerInterval = setInterval(tick, 1000)
+}
+
+function renderTime(){
+  mins = Math.floor(timeUp / 60)
+  secs = timeUp % 60
+  if (secs < 10){
+    timer.innerHTML = `Time ${mins}:0${secs}`
+  } else {
+    timer.innerHTML = `Time ${mins}:${secs}`
+  }
+  console.log(document.getElementById("timer").innerHTML)
+  console.log(timeUp)
+  console.log(mins)
+  console.log(secs)
+}
+
+
 
 function timerDown(){
   // if level set on hard
@@ -104,6 +138,9 @@ function countMoves() {
 }
 
 function gameOver(){
+  if (mins === 5) {
+    document.querySelector("h1").innerText = "Game over! Please click Restart"
+  }
   // compares variables if timeUp = 5:00 disable clicks on game board
   // or if timeDown = 0:00 
   // then show message " You've lost. Please restart the game"
