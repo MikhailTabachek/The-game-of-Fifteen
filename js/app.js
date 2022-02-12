@@ -2,7 +2,8 @@
 const winNumberOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, null]
 
 /*--------------------- Variables (state) -----------------------*/
-let randomOrder =[]
+let randomOrder = []
+let timeUp, timeDown
 
 /*-------------------Cached Element References-------------------*/
 // let timer = document.querySelector("#timer")
@@ -22,15 +23,10 @@ document.querySelector(".number").forEach(square => {
 
 init()
 function init(){
-  //// set timer to 0:00
   timer = timer.innerHTML = "Time 0:00"
-  console.log(timer)
-  // set moves to 0
   moves = moves.innerHTML = "Moves 000"
-  console.log(moves)
   // set level to easy
 
-  //// initialize shuffleArray function
   shuffleArray()
 
 }
@@ -49,6 +45,33 @@ function shuffleArray() {
 
 function moveNull() {
   randomOrder.push(randomOrder.splice(randomOrder.indexOf(null), 1)[0])
+}
+
+function timerUp() {
+  //if level set on easy
+  // starts at 0:00
+  // stops at 5:00
+  
+}
+
+function timerDown(){
+  // if level set on hard
+  // starts at 2:00
+  // stops at 0:00
+}
+
+function gameOver(){
+  // compares variables if timeUp = 5:00 disable clicks on game board
+  // or if timeDown = 0:00 
+  // then show message " You've lost. Please restart the game"
+  // disable moves on a game board
+}
+
+function playerWin() {
+  // if numbers in randomOrder array = to winNumberOrder
+  // swow message "Congrats, you won!"
+  // disable moves on a game board
+  
 }
 
 
