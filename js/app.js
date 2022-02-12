@@ -14,6 +14,10 @@ document.querySelector("#play-btn").addEventListener("click", console.log("Click
 
 document.querySelector("#reset-btn").addEventListener("click", () => console.log("Clicked Reset Button"))
 
+document.querySelector(".number").forEach(square => {
+  square.addEventListener("click", handleClick)
+});
+
 /*-------------------------Functions-----------------------------*/
 
 init()
@@ -26,7 +30,6 @@ function init(){
   console.log(moves)
   // set level to easy
 
-  // activate play button
   //// initialize shuffleArray function
   shuffleArray()
 
@@ -47,3 +50,5 @@ function shuffleArray() {
 function moveNull() {
   randomOrder.push(randomOrder.splice(randomOrder.indexOf(null), 1)[0])
 }
+
+
