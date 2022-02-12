@@ -44,4 +44,6 @@ function shuffleArray() {
   moveNull()
 }
 
-
+function moveNull() {
+  randomOrder.push(randomOrder.splice(randomOrder.indexOf(null), 1)[0])
+}
