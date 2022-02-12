@@ -66,12 +66,21 @@ function handleClick() {
   // target the square that was clicked
   // take the id#
   // store id# in variable
-  // call render function
+  // call findNull function
+}
+
+function findNull(){
+  // looks inside of all arrays in array
+  // finds X number that was clicked on
+  // if X number has null within the same array with index -1 or + 1 (from X number) or
+  // if X number has null in array above or under it with same index number then swap them and call render
+  // if not return false
 }
 
 function render(){
-  // takes id# from a variable
-  // looki
+  // takes numbers from an array of arrays and sets in new order on the board
+  // converts to a single array and compares with win combination
+  // if it matches, call player win function
 }
 
 function timerUp() {
