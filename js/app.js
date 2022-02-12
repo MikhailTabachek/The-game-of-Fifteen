@@ -48,6 +48,22 @@ function moveNull() {
   randomOrder.push(randomOrder.splice(randomOrder.indexOf(null), 1)[0])
 }
 
+function playButton(){
+  // button is activate when page is loaded
+  // after player click on play it disables and timer starts
+  // if player clicks on reset, button becomes active again
+}
+
+function resetButton(){
+  // Reset button always active
+  // if clicked, calls init() function
+  // enables play button
+  // disables clicking on board squares
+  // 
+}
+
+
+
 function timerUp() {
   //if level set on easy
   // starts at 0:00
