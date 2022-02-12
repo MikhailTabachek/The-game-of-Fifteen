@@ -11,11 +11,11 @@ let timeUp, timeDown
 // let numberOfMoves = document.querySelector("moves")
 
 /*----------------------Event Listeners--------------------------*/
-document.querySelector("#play-btn").addEventListener("click", console.log("Clicked Play Button"))
+document.querySelector("#play-btn").addEventListener("click", () => console.log("Clicked Play Button"))
 
 document.querySelector("#reset-btn").addEventListener("click", () => console.log("Clicked Reset Button"))
 
-document.querySelector(".number").forEach(square => {
+document.querySelectorAll(".number").forEach(square => {
   square.addEventListener("click", handleClick)
 });
 
@@ -25,7 +25,8 @@ init()
 function init(){
   timer = timer.innerHTML = "Time 0:00"
   moves = moves.innerHTML = "Moves 000"
-  // set level to easy
+  // set level to easy by default
+  // disable clicking on squares
 
   shuffleArray()
 
@@ -51,6 +52,7 @@ function timerUp() {
   //if level set on easy
   // starts at 0:00
   // stops at 5:00
+  // starts after player clicks on Play button
   
 }
 
@@ -58,6 +60,12 @@ function timerDown(){
   // if level set on hard
   // starts at 2:00
   // stops at 0:00
+  // starts after player clicks on Play button
+}
+
+function countMoves() {
+  // after clicked square moves to empty spot add +1 to moves counter
+  // stop counting when timer is up
 }
 
 function gameOver(){
@@ -71,7 +79,7 @@ function playerWin() {
   // if numbers in randomOrder array = to winNumberOrder
   // swow message "Congrats, you won!"
   // disable moves on a game board
-  
+
 }
 
 
