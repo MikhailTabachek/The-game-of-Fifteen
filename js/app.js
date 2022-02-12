@@ -62,7 +62,17 @@ function resetButton(){
   // 
 }
 
+function handleClick() {
+  // target the square that was clicked
+  // take the id#
+  // store id# in variable
+  // call render function
+}
 
+function render(){
+  // takes id# from a variable
+  // looki
+}
 
 function timerUp() {
   //if level set on easy
