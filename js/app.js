@@ -26,6 +26,15 @@ document.querySelectorAll(".number").forEach(square => {
 
 init()
 function init(){
+  timeUp = 0
+  timer.innerHTML = `Time ${mins}:0${secs}`
+  document.querySelector("#play-btn").disabled = false
+  if(timerInterval) {
+    clearInterval(timerInterval)
+    timerInterval = null
+  } else {
+    render()
+  }
   moves = moves.innerHTML = "Moves 000"
   // set level to easy by default
   // disable clicking on squares
@@ -52,12 +61,9 @@ function moveNull() {
 
 function playButton(){
   console.log("Clicked Play Button")
-  if(timerInterval) {
-    clearInterval(timerInterval)
-    timerInterval = null
-  } else {
-    startTime()
-  }
+  startTime()
+  document.querySelector("#play-btn").disabled = true
+  
   
   // button is activate when page is loaded
   // after player click on play timer starts and it disables
@@ -65,7 +71,11 @@ function playButton(){
 }
 
 function resetButton(){
-  
+  clearInterval(timerInterval)
+  secs = 0
+  mins = 0
+  timerInterval = null
+  init()
   console.log("Clicked Reset Button")
   // Reset button always active
   // if clicked, calls init() function
