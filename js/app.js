@@ -2,60 +2,46 @@
 const winNumberOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, null]
 
 /*--------------------- Variables (state) -----------------------*/
-let time, NumberOfMoves
 let randomOrder =[]
 
 /*-------------------Cached Element References-------------------*/
-let timer = document.querySelector("#timer")
-console.log(timer.innerText)
+// let timer = document.querySelector("#timer")
 
-let numberOfMoves = document.querySelector("moves")
-console.log(moves.innerText)
+// let numberOfMoves = document.querySelector("moves")
 
 /*----------------------Event Listeners--------------------------*/
-document.querySelector("#play-btn").addEventListener("click", shuffleArray())
+document.querySelector("#play-btn").addEventListener("click", console.log("Clicked Play Button"))
 
 document.querySelector("#reset-btn").addEventListener("click", () => console.log("Clicked Reset Button"))
 
-
-
-
 /*-------------------------Functions-----------------------------*/
 
+init()
 function init(){
-  
+  //// set timer to 0:00
+  timer = timer.innerHTML = "Time 0:00"
+  console.log(timer)
+  // set moves to 0
+  moves = moves.innerHTML = "Moves 000"
+  console.log(moves)
+  // set level to easy
+
+  // activate play button
+  //// initialize shuffleArray function
+  shuffleArray()
 
 }
 
 
 function shuffleArray() {
   let shArr = winNumberOrder
-  shArr.sort(() => Math.random() - 0.5)
-  shArr.push(shArr.splice(shArr.indexOf(null), 1)[0])
-  randomOrder = shArr
+  for(i = 0; i < 15; i++){
+    let randomIdx = Math.floor(Math.random() * shArr.length)
+    let numberPicked = shArr.splice(randomIdx, 1)[0]
+    randomOrder.push(numberPicked)
+
+  }
+  moveNull()
 }
 
-console.log(randomOrder)
-
-
-
-
-
-
-
-
-
-// function randomNumbers(){
-//   for(i = 0; i < 16; i++){
-//     let num = Math.floor((Math.random() * 15) + 1)
-//     if (num !== randomOrder.includes(num)){
-//     randomOrder.unshift(num)
-//     } else {
-//     return
-//   }
-    
-
-//     console.log(randomOrder)
-//   }
-// }
 
