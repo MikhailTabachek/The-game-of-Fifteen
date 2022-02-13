@@ -46,7 +46,7 @@ function init(){
 
 function shuffleArray() {
   let shArr = winNumberOrder
-  for(i = 0; i < 15; i++){
+  for(i = 0; i < 16; i++){
     let randomIdx = Math.floor(Math.random() * shArr.length)
     let numberPicked = shArr.splice(randomIdx, 1)[0]
     randomOrder.push(numberPicked)
@@ -58,6 +58,7 @@ function shuffleArray() {
 function moveNull() {
   randomOrder.push(randomOrder.splice(randomOrder.indexOf(null), 1)[0])
 }
+console.log(randomOrder)
 
 function playButton(){
   console.log("Clicked Play Button")
@@ -84,12 +85,17 @@ function resetButton(){
   // 
 }
 
-function handleClick() {
-  // target the square that was clicked
-  // take the id#
-  // store id# in variable
+function handleClick(sqId) {
+  let square = sqId.target.id
+  square = square.substr(square.indexOf("r")+1)
+  console.log(square)
+  }
+
+  // //target the square that was clicked
+  // //take the id#
+  // //store id# in variable
   // call findNull function
-}
+
 
 function findNull(){
   // looks inside of all arrays in array
