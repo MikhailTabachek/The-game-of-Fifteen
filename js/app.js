@@ -3,7 +3,7 @@ const winNumberOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, null]
 
 /*--------------------- Variables (state) -----------------------*/
 let randomOrder = []
-let timeDown, timerInterval, squareClicked
+let timeDown, timerInterval, squareIdxClicked, movesCount
 let timeUp = 0
 let mins = 0
 let secs = 0
@@ -27,15 +27,14 @@ document.querySelectorAll(".number").forEach(square => {
 init()
 function init(){
   timeUp = 0
+  movesCount = 0
   timer.innerHTML = `Time ${mins}:0${secs}`
   document.querySelector("#play-btn").disabled = false
   if(timerInterval) {
     clearInterval(timerInterval)
     timerInterval = null
-  } else {
-    render()
-  }
-  moves = moves.innerHTML = "Moves 000"
+  } 
+  moves.innerHTML = `Moves 00${movesCount}`
 
   // set level to easy by default
   // disable clicking on squares
@@ -94,9 +93,10 @@ function resetButton(){
 
 function handleClick(sqId) {
   let square = sqId.target.id
-  square = square.substr(square.indexOf("r") + 1)
-  squareClicked = square
-  console.log(squareClicked)
+  square = parseInt(square.substr(square.indexOf("r") + 1))
+  squareIdxClicked = square
+  console.log(squareIdxClicked)
+  findNull()
   }
 
   // //target the square that was clicked
@@ -106,19 +106,34 @@ function handleClick(sqId) {
 
   
 
-
 function findNull(){
-
-  // looks inside of array
-  // finds X number that was clicked on
-  // if X number has null within the same array with index -1 or + 1 (from X number) or
-  // if X number has null in array above or under it with same index number then swap them and call render
-  // if not return false
+  currentArrState = randomOrder
+  numInSquare = currentArrState[squareIdxClicked]
+  if(randomOrder[squareIdxClicked - 1] === null) {
+    currentArrState = [currentArrState[squareIdxClicked], currentArrState[squareIdxClicked - 1]] = [currentArrState[squareIdxClicked - 1], currentArrState[squareIdxClicked]]
+    randomOrder = currentArrState
+    movesCount += 1
+  } else if (randomOrder[squareIdxClicked + 1] === null) {
+    currentArrState = [currentArrState[squareIdxClicked], currentArrState[squareIdxClicked + 1]] = [currentArrState[squareIdxClicked + 1], currentArrState[squareIdxClicked]]
+    randomOrder = currentArrState
+    movesCount += 1
+  } else if (randomOrder[squareIdxClicked + 4] === null) {
+    currentArrState = [currentArrState[squareIdxClicked], currentArrState[squareIdxClicked + 4]] = [currentArrState[squareIdxClicked + 4], currentArrState[squareIdxClicked]]
+    randomOrder = currentArrState
+    movesCount += 1
+  } else if (randomOrder[squareIdxClicked - 4] === null) {
+    currentArrState = [currentArrState[squareIdxClicked], currentArrState[squareIdxClicked - 4]] = [currentArrState[squareIdxClicked - 4], currentArrState[squareIdxClicked]]
+    randomOrder = currentArrState
+    movesCount += 1
+  } else {
+    console.log ("Clicked square is not in range")
+  }
+render()
 }
 
 function render(){
-  // takes numbers from an array of arrays and sets in new order on the board
-  // converts to a single array and compares with win combination
+  document.getElementById(sqrTxt).innerHTML = randomOrder[i]
+
   // if it matches, call player win function
 }
 
@@ -144,11 +159,6 @@ function renderTime(){
   } else {
     timer.innerHTML = `Time ${mins}:${secs}`
   }
-
-  console.log(document.getElementById("timer").innerHTML)
-  console.log(timeUp)
-  console.log(mins)
-  console.log(secs)
 }
 
 
