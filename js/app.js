@@ -36,6 +36,7 @@ function init(){
     render()
   }
   moves = moves.innerHTML = "Moves 000"
+
   // set level to easy by default
   // disable clicking on squares
 
@@ -57,6 +58,14 @@ function shuffleArray() {
 
 function moveNull() {
   randomOrder.push(randomOrder.splice(randomOrder.indexOf(null), 1)[0])
+  arrayNumToSq()
+}
+
+function arrayNumToSq() {
+  for(i = 0; i < randomOrder.length; i++) {
+  let sqrTxt = `sqr${i}`
+  document.getElementById(sqrTxt).innerHTML = randomOrder[i]
+  }
 }
 console.log(randomOrder)
 
@@ -65,10 +74,10 @@ function playButton(){
   startStopTime()
   document.querySelector("#play-btn").disabled = true
   
-  
-  // button is activate when page is loaded
-  // after player click on play timer starts and it disables
-  // if player clicks on reset, button becomes active again
+  // call function to activate clicks on board
+  // //button is activate when page is loaded
+  //// after player click on play timer starts and it disables
+  // //if player clicks on reset, button becomes active again
 }
 
 function resetButton(){
@@ -78,16 +87,14 @@ function resetButton(){
   timerInterval = null
   init()
   console.log("Clicked Reset Button")
-  // Reset button always active
-  // if clicked, calls init() function
-  // enables play button
+  //// Reset button always active
+  //// if clicked, calls init() function
   // disables clicking on board squares
-  // 
 }
 
 function handleClick(sqId) {
   let square = sqId.target.id
-  square = square.substr(square.indexOf("r")+1)
+  square = square.substr(square.indexOf("r") + 1)
   console.log(square)
   }
 
@@ -95,6 +102,8 @@ function handleClick(sqId) {
   // //take the id#
   // //store id# in variable
   // call findNull function
+
+  
 
 
 function findNull(){
