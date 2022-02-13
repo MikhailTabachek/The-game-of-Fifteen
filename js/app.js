@@ -3,7 +3,7 @@ const winNumberOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, null]
 
 /*--------------------- Variables (state) -----------------------*/
 let randomOrder = []
-let timeDown, timerInterval
+let timeDown, timerInterval, squareClicked
 let timeUp = 0
 let mins = 0
 let secs = 0
@@ -95,7 +95,8 @@ function resetButton(){
 function handleClick(sqId) {
   let square = sqId.target.id
   square = square.substr(square.indexOf("r") + 1)
-  console.log(square)
+  squareClicked = square
+  console.log(squareClicked)
   }
 
   // //target the square that was clicked
@@ -107,7 +108,8 @@ function handleClick(sqId) {
 
 
 function findNull(){
-  // looks inside of all arrays in array
+
+  // looks inside of array
   // finds X number that was clicked on
   // if X number has null within the same array with index -1 or + 1 (from X number) or
   // if X number has null in array above or under it with same index number then swap them and call render
