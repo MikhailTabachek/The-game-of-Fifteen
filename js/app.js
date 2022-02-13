@@ -108,21 +108,26 @@ function handleClick(sqId) {
 
 function findNull(){
   currentArrState = randomOrder
-  numInSquare = currentArrState[squareIdxClicked]
+  const toSwap = squareIdxClicked
+  // numInSquare = currentArrState[squareIdxClicked]
   if(randomOrder[squareIdxClicked - 1] === null) {
-    currentArrState = [currentArrState[squareIdxClicked], currentArrState[squareIdxClicked - 1]] = [currentArrState[squareIdxClicked - 1], currentArrState[squareIdxClicked]]
+    currentArrState[squareIdxClicked - 1] = currentArrState[squareIdxClicked]
+    currentArrState[toSwap] = null
     randomOrder = currentArrState
     movesCount += 1
   } else if (randomOrder[squareIdxClicked + 1] === null) {
-    currentArrState = [currentArrState[squareIdxClicked], currentArrState[squareIdxClicked + 1]] = [currentArrState[squareIdxClicked + 1], currentArrState[squareIdxClicked]]
+    currentArrState[squareIdxClicked + 1] = currentArrState[squareIdxClicked]
+    currentArrState[toSwap] = null
     randomOrder = currentArrState
     movesCount += 1
   } else if (randomOrder[squareIdxClicked + 4] === null) {
-    currentArrState = [currentArrState[squareIdxClicked], currentArrState[squareIdxClicked + 4]] = [currentArrState[squareIdxClicked + 4], currentArrState[squareIdxClicked]]
+    currentArrState[squareIdxClicked + 4] = currentArrState[squareIdxClicked]
+    currentArrState[toSwap] = null
     randomOrder = currentArrState
     movesCount += 1
   } else if (randomOrder[squareIdxClicked - 4] === null) {
-    currentArrState = [currentArrState[squareIdxClicked], currentArrState[squareIdxClicked - 4]] = [currentArrState[squareIdxClicked - 4], currentArrState[squareIdxClicked]]
+    currentArrState[squareIdxClicked - 4] = currentArrState[squareIdxClicked]
+    currentArrState[toSwap] = null
     randomOrder = currentArrState
     movesCount += 1
   } else {
@@ -132,7 +137,9 @@ render()
 }
 
 function render(){
-  document.getElementById(sqrTxt).innerHTML = randomOrder[i]
+  arrayNumToSq()
+  moves.innerHTML = `Moves 00${movesCount}`
+  
 
   // if it matches, call player win function
 }
@@ -140,10 +147,6 @@ function render(){
 function tick() {
   timeUp++
   renderTime()
-  // starts at 0:00
-  // stops at 5:00
-  // starts after player clicks on Play button
-  
 }
 
 function startStopTime(){
