@@ -37,14 +37,15 @@ function init(){
   secs = 0
   mins = 0
   toggleLabel.classList.remove("disable-clicks")
-  toggleState ()
   playBtn.disabled = false
   if(timerInterval) {
     clearInterval(timerInterval)
     timerInterval = null
-  } 
+  }
+  toggleState ()
   moves.innerHTML = `Moves 00${movesCount}`
   gameBoard.classList.add("disable-clicks")
+  document.getElementById("sqr15").classList.add("empty")
   shuffleArray()
 }
 
@@ -105,6 +106,7 @@ function handleClick(sqId) {
   let square = sqId.target.id
   square = parseInt(square.substr(square.indexOf("r") + 1))
   squareIdxClicked = square
+  document.getElementById(`sqr${squareIdxClicked}`).classList.add("empty")
   findNull()
   }
 
@@ -112,21 +114,25 @@ function findNull(){
   currentArrState = randomOrder
   const toSwap = squareIdxClicked
   if(randomOrder[squareIdxClicked - 1] === null) {
+    document.getElementById(`sqr${toSwap -1}`).classList.remove("empty")
     currentArrState[squareIdxClicked - 1] = currentArrState[squareIdxClicked]
     currentArrState[toSwap] = null
     randomOrder = currentArrState
     movesCount += 1
   } else if (randomOrder[squareIdxClicked + 1] === null) {
+    document.getElementById(`sqr${toSwap +1}`).classList.remove("empty")
     currentArrState[squareIdxClicked + 1] = currentArrState[squareIdxClicked]
     currentArrState[toSwap] = null
     randomOrder = currentArrState
     movesCount += 1
   } else if (randomOrder[squareIdxClicked + 4] === null) {
+    document.getElementById(`sqr${toSwap + 4}`).classList.remove("empty")
     currentArrState[squareIdxClicked + 4] = currentArrState[squareIdxClicked]
     currentArrState[toSwap] = null
     randomOrder = currentArrState
     movesCount += 1
   } else if (randomOrder[squareIdxClicked - 4] === null) {
+    document.getElementById(`sqr${toSwap - 4}`).classList.remove("empty")
     currentArrState[squareIdxClicked - 4] = currentArrState[squareIdxClicked]
     currentArrState[toSwap] = null
     randomOrder = currentArrState
@@ -150,6 +156,7 @@ function render(){
 function timerGoesUp(){
   timerInterval = setInterval(tick, 1000)
   setTimeout(gameOver, 300000)
+  console.log(timerInterval)
 }
 
 function tick() {
@@ -171,6 +178,7 @@ function renderTime(){
 function timerGoesDown(){
   let timerSeconds = 120
   timerInterval = setInterval(function() {
+  console.log(timerInterval)
   mins = Math.floor(timerSeconds / 60)
   secs = timerSeconds % 60
     timerSeconds -= 1
@@ -183,6 +191,7 @@ function timerGoesDown(){
       clearInterval(timerInterval)
     }
   }, 1000)
+  
 }
 
 function gameOver(){

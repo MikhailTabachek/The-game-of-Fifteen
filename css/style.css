@@ -25,7 +25,7 @@ h1 {
   border: 2px, white;
   border-style: solid;
   padding: 15px;
-  font-size: 50px;
+  font-size: 25px;
   border-radius: 10px;
   text-align: center;
   margin-top: 3%;
@@ -172,6 +172,10 @@ margin-bottom: 5px;
 
 
 @media only screen and (min-width: 768px) {
+
+  h1 {
+    font-size: 50px;
+  }
 
   .level-and-play-reset-btns{
     margin-bottom: 20px;
