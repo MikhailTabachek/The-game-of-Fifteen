@@ -107,7 +107,6 @@ function handleClick(sqId) {
   let square = sqId.target.id
   square = parseInt(square.substr(square.indexOf("r") + 1))
   squareIdxClicked = square
-  // document.getElementById(`sqr${squareIdxClicked}`).classList.add("empty")
   findNull()
   }
 
