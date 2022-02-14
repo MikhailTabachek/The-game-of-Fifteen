@@ -14,6 +14,7 @@ let numberOfMoves = document.querySelector("#moves")
 let playBtn = document.querySelector("#play-btn")
 let hOne = document.querySelector("h1")
 let gameBoard = document.querySelector(".game-board")
+let toggle = document.querySelector("#toggle")
 
 /*----------------------Event Listeners--------------------------*/
 document.querySelector("#play-btn").addEventListener("click", playButton)
@@ -24,6 +25,8 @@ document.querySelectorAll(".number").forEach(square => {
   square.addEventListener("click", handleClick)
 });
 
+toggle.addEventListener("click", toggleState)
+
 /*-------------------------Functions-----------------------------*/
 init()
 function init(){
@@ -32,7 +35,7 @@ function init(){
   movesCount = 0
   secs = 0
   mins = 0
-  timer.innerHTML = `Time ${mins}:0${secs}`
+  toggle.unchecked
   playBtn.disabled = false
   if(timerInterval) {
     clearInterval(timerInterval)
@@ -41,6 +44,16 @@ function init(){
   moves.innerHTML = `Moves 00${movesCount}`
   gameBoard.classList.add("disable-clicks")
   shuffleArray()
+}
+
+function toggleState (){
+  if(toggle.checked){
+    mins = 2
+    timer.innerHTML = `Time ${mins}:0${secs}`
+  }else{
+    mins = 0
+    timer.innerHTML = `Time ${mins}:0${secs}`
+  }
 }
 
 
@@ -154,9 +167,9 @@ function renderTime(){
 
 function timerGoesDown(){
   let timerSeconds = 120
+  timerInterval = setInterval(function() {
   mins = Math.floor(timerSeconds / 60)
   secs = timerSeconds % 60
-  let displayTime = setInterval(function() {
     timerSeconds -= 1
     if (secs < 10){
       timer.innerHTML = `Time ${mins}:0${secs}`
@@ -164,9 +177,10 @@ function timerGoesDown(){
       timer.innerHTML = `Time ${mins}:${secs}`
     } else if (mins === 0 && secs === 0){
       hOne.innerText = "Time is Up. Please click restart"
-      clearInterval(displayTime)
+      clearInterval(timerInterval)
     }
   }, 1000)
+}
     
   
   // if level set on hard
