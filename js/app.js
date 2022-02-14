@@ -95,6 +95,7 @@ function playButton(){
 
 function resetButton(){
   clearArr(randomOrder)
+  document.getElementById(`sqr${squareIdxClicked}`).classList.remove("empty")
   init()
 }
 
@@ -106,7 +107,7 @@ function handleClick(sqId) {
   let square = sqId.target.id
   square = parseInt(square.substr(square.indexOf("r") + 1))
   squareIdxClicked = square
-  document.getElementById(`sqr${squareIdxClicked}`).classList.add("empty")
+  // document.getElementById(`sqr${squareIdxClicked}`).classList.add("empty")
   findNull()
   }
 
@@ -118,24 +119,28 @@ function findNull(){
     currentArrState[squareIdxClicked - 1] = currentArrState[squareIdxClicked]
     currentArrState[toSwap] = null
     randomOrder = currentArrState
+    document.getElementById(`sqr${toSwap}`).classList.add("empty")
     movesCount += 1
   } else if (randomOrder[squareIdxClicked + 1] === null) {
     document.getElementById(`sqr${toSwap +1}`).classList.remove("empty")
     currentArrState[squareIdxClicked + 1] = currentArrState[squareIdxClicked]
     currentArrState[toSwap] = null
     randomOrder = currentArrState
+    document.getElementById(`sqr${toSwap}`).classList.add("empty")
     movesCount += 1
   } else if (randomOrder[squareIdxClicked + 4] === null) {
     document.getElementById(`sqr${toSwap + 4}`).classList.remove("empty")
     currentArrState[squareIdxClicked + 4] = currentArrState[squareIdxClicked]
     currentArrState[toSwap] = null
     randomOrder = currentArrState
+    document.getElementById(`sqr${toSwap}`).classList.add("empty")
     movesCount += 1
   } else if (randomOrder[squareIdxClicked - 4] === null) {
     document.getElementById(`sqr${toSwap - 4}`).classList.remove("empty")
     currentArrState[squareIdxClicked - 4] = currentArrState[squareIdxClicked]
     currentArrState[toSwap] = null
     randomOrder = currentArrState
+    document.getElementById(`sqr${toSwap}`).classList.add("empty")
     movesCount += 1
   }
 

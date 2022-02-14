@@ -104,13 +104,15 @@ input:checked + .slider:before {
   font-family: 'Fredoka One', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   justify-content: center;
   align-items: flex-start;
-  font-size: 35px;
+  font-size: 25px;
+  overflow-wrap: break-word;
 }
 
 #timer {
   color: rgb(235, 126, 25);
   font-family: 'Fredoka One', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 35px;
+  font-size: 25px;
+  overflow-wrap: break-word;
 
 }
 
@@ -219,6 +221,10 @@ margin-bottom: 5px;
   border: 2px solid rgb(219, 189, 19);
   border-radius: 5px;
   
+  }
+
+  .level-moves-time {
+    font-size: 40px;
   }
 
 
