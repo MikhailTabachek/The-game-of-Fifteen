@@ -15,6 +15,7 @@ let playBtn = document.querySelector("#play-btn")
 let hOne = document.querySelector("h1")
 let gameBoard = document.querySelector(".game-board")
 let toggle = document.querySelector("#toggle")
+let toggleLabel = document.getElementById("toggle-label")
 
 /*----------------------Event Listeners--------------------------*/
 document.querySelector("#play-btn").addEventListener("click", playButton)
@@ -35,7 +36,8 @@ function init(){
   movesCount = 0
   secs = 0
   mins = 0
-  toggle.unchecked
+  toggleLabel.classList.remove("disable-clicks")
+  toggleState ()
   playBtn.disabled = false
   if(timerInterval) {
     clearInterval(timerInterval)
@@ -85,6 +87,7 @@ function playButton(){
   }else{
     timerGoesUp()
   }
+  toggleLabel.classList.add("disable-clicks")
   playBtn.disabled = true
   gameBoard.classList.remove("disable-clicks")
 }
@@ -181,13 +184,6 @@ function timerGoesDown(){
     }
   }, 1000)
 }
-    
-  
-  // if level set on hard
-  // starts at 2:00
-  // stops at 0:00
-  // starts after player clicks on Play button
-
 
 function gameOver(){
     hOne.innerText = "Game over! Click Restart"
