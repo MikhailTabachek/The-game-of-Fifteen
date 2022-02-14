@@ -41,7 +41,6 @@ function init(){
   moves.innerHTML = `Moves 00${movesCount}`
   gameBoard.classList.add("disable-clicks")
   shuffleArray()
-  // set level to easy by default
 }
 
 
@@ -68,7 +67,11 @@ function arrayNumToSq() {
   }
 
 function playButton(){
-  startStopTime()
+  if (document.querySelector("#toggle").checked){
+  timerGoesDown()
+  }else{
+    timerGoesUp()
+  }
   playBtn.disabled = true
   gameBoard.classList.remove("disable-clicks")
 }
@@ -88,13 +91,6 @@ function handleClick(sqId) {
   squareIdxClicked = square
   findNull()
   }
-
-  // //target the square that was clicked
-  // //take the id#
-  // //store id# in variable
-  // call findNull function
-
-  
 
 function findNull(){
   currentArrState = randomOrder
@@ -135,14 +131,14 @@ function render(){
   }
 }
 
+function timerGoesUp(){
+  timerInterval = setInterval(tick, 1000)
+  setTimeout(gameOver, 300000)
+}
+
 function tick() {
   timeUp++
   renderTime()
-}
-
-function startStopTime(){
-  timerInterval = setInterval(tick, 1000)
-  setTimeout(gameOver, 300000)
 }
 
 function renderTime(){
@@ -156,12 +152,28 @@ function renderTime(){
   playerWin()
 }
 
-function timerDown(){
+function timerGoesDown(){
+  let timerSeconds = 120
+  mins = Math.floor(timerSeconds / 60)
+  secs = timerSeconds % 60
+  let displayTime = setInterval(function() {
+    timerSeconds -= 1
+    if (secs < 10){
+      timer.innerHTML = `Time ${mins}:0${secs}`
+    } else if(secs > 10) {
+      timer.innerHTML = `Time ${mins}:${secs}`
+    } else if (mins === 0 && secs === 0){
+      hOne.innerText = "Time is Up. Please click restart"
+      clearInterval(displayTime)
+    }
+  }, 1000)
+    
+  
   // if level set on hard
   // starts at 2:00
   // stops at 0:00
   // starts after player clicks on Play button
-}
+
 
 function gameOver(){
     hOne.innerText = "Game over! Click Restart"
