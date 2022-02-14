@@ -23,7 +23,7 @@ document.querySelectorAll(".number").forEach(square => {
 });
 
 /*-------------------------Functions-----------------------------*/
-
+// console.log(randomOrder)
 init()
 function init(){
   timeUp = 0
@@ -39,18 +39,18 @@ function init(){
   // set level to easy by default
   // disable clicking on squares
 
+  console.log(randomOrder)
   shuffleArray()
-
 }
 
 
 function shuffleArray() {
   let shArr = winNumberOrder
+  // console.log(shArr)
   for(i = 0; i < 16; i++){
     let randomIdx = Math.floor(Math.random() * shArr.length)
     let numberPicked = shArr.splice(randomIdx, 1)[0]
     randomOrder.push(numberPicked)
-
   }
   moveNull()
 }
@@ -62,10 +62,10 @@ function moveNull() {
 
 function arrayNumToSq() {
   for(i = 0; i < randomOrder.length; i++) {
-  let sqrTxt = `sqr${i}`
-  document.getElementById(sqrTxt).innerHTML = randomOrder[i]
+    let sqrTxt = `sqr${i}`
+      document.getElementById(sqrTxt).innerHTML = randomOrder[i]
+    }
   }
-}
 console.log(randomOrder)
 
 function playButton(){
@@ -80,16 +80,25 @@ function playButton(){
 }
 
 function resetButton(){
+  console.log("Clicked Reset Button")
   clearInterval(timerInterval)
   secs = 0
   mins = 0
-  timerInterval = null
+  // timerInterval = null
+  clearArr(randomOrder)
   init()
-  console.log("Clicked Reset Button")
+  console.log(randomOrder.length)
+  
   //// Reset button always active
   //// if clicked, calls init() function
   // disables clicking on board squares
 }
+
+function clearArr(){
+  arr.splice(0, 16)
+}
+
+console.log(randomOrder.length)
 
 function handleClick(sqId) {
   let square = sqId.target.id
@@ -138,8 +147,15 @@ render()
 
 function render(){
   arrayNumToSq()
-  moves.innerHTML = `Moves 00${movesCount}`
+  if(movesCount < 10){
+    moves.innerHTML = `Moves 00${movesCount}`
+  } else if(movesCount >= 10 && movesCount < 100) {
+    moves.innerHTML = `Moves 0${movesCount}`
+  } else {
+    moves.innerHTML = `Moves ${movesCount}`
+  }
   
+  playerWin()
 
   // if it matches, call player win function
 }
@@ -188,6 +204,11 @@ function gameOver(){
 }
 
 function playerWin() {
+  let a = randomOrder
+  let b = winNumberOrder
+  if(a == b){
+    document.querySelector('h1').innerText = "You Won!"
+  }
   // if numbers in randomOrder array = to winNumberOrder
   // swow message "Congrats, you won!"
   // disable moves on a game board
