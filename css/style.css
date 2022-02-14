@@ -161,6 +161,15 @@ margin-bottom: 5px;
   margin: 2px;
 }
 
+.number.empty {
+  border: none;
+  background: none;
+}
+
+.disable-clicks{
+  pointer-events: none;
+}
+
 
 @media only screen and (min-width: 768px) {
 

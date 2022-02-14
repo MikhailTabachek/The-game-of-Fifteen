@@ -4,14 +4,17 @@ const winNumberOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, null]
 /*--------------------- Variables (state) -----------------------*/
 let randomOrder = []
 let timeDown, timerInterval, squareIdxClicked, movesCount
-let timeUp = 0
-let mins = 0
-let secs = 0
+let timeUp
+let mins
+let secs
 
 /*-------------------Cached Element References-------------------*/
 let timer = document.querySelector("#timer")
-
 let numberOfMoves = document.querySelector("#moves")
+let playBtn = document.querySelector("#play-btn")
+let hOne = document.querySelector("h1")
+let gameBoard = document.querySelector(".game-board")
+console.log(gameBoard)
 
 /*----------------------Event Listeners--------------------------*/
 document.querySelector("#play-btn").addEventListener("click", playButton)
@@ -26,15 +29,20 @@ document.querySelectorAll(".number").forEach(square => {
 // console.log(randomOrder)
 init()
 function init(){
+  randomOrder = []
   timeUp = 0
   movesCount = 0
+  secs = 0
+  mins = 0
   timer.innerHTML = `Time ${mins}:0${secs}`
-  document.querySelector("#play-btn").disabled = false
+  playBtn.disabled = false
   if(timerInterval) {
     clearInterval(timerInterval)
     timerInterval = null
   } 
   moves.innerHTML = `Moves 00${movesCount}`
+  gameBoard.classList.add("disable-clicks")
+  console.log(gameBoard)
 
   // set level to easy by default
   // disable clicking on squares
@@ -45,7 +53,7 @@ function init(){
 
 
 function shuffleArray() {
-  let shArr = winNumberOrder
+  let shArr = [...winNumberOrder]
   // console.log(shArr)
   for(i = 0; i < 16; i++){
     let randomIdx = Math.floor(Math.random() * shArr.length)
@@ -71,7 +79,8 @@ console.log(randomOrder)
 function playButton(){
   console.log("Clicked Play Button")
   startStopTime()
-  document.querySelector("#play-btn").disabled = true
+  playBtn.disabled = true
+  gameBoard.classList.remove("disable-clicks")
   
   // call function to activate clicks on board
   // //button is activate when page is loaded
@@ -81,21 +90,14 @@ function playButton(){
 
 function resetButton(){
   console.log("Clicked Reset Button")
-  clearInterval(timerInterval)
-  secs = 0
-  mins = 0
-  // timerInterval = null
+  // clearInterval(timerInterval)
   clearArr(randomOrder)
   init()
-  console.log(randomOrder.length)
-  
-  //// Reset button always active
-  //// if clicked, calls init() function
   // disables clicking on board squares
 }
 
 function clearArr(){
-  arr.splice(0, 16)
+  randomOrder.splice(0, 16)
 }
 
 console.log(randomOrder.length)
@@ -104,7 +106,6 @@ function handleClick(sqId) {
   let square = sqId.target.id
   square = parseInt(square.substr(square.indexOf("r") + 1))
   squareIdxClicked = square
-  console.log(squareIdxClicked)
   findNull()
   }
 
@@ -118,7 +119,6 @@ function handleClick(sqId) {
 function findNull(){
   currentArrState = randomOrder
   const toSwap = squareIdxClicked
-  // numInSquare = currentArrState[squareIdxClicked]
   if(randomOrder[squareIdxClicked - 1] === null) {
     currentArrState[squareIdxClicked - 1] = currentArrState[squareIdxClicked]
     currentArrState[toSwap] = null
@@ -155,7 +155,7 @@ function render(){
     moves.innerHTML = `Moves ${movesCount}`
   }
   
-  playerWin()
+  
 
   // if it matches, call player win function
 }
@@ -195,7 +195,7 @@ function countMoves() {
 }
 
 function gameOver(){
-    document.querySelector("h1").innerText = "Game over! Please click Restart"
+    hOne.innerText = "Game over! Please click Restart"
     clearInterval(timerInterval)
   // compares variables if timeUp = 5:00 disable clicks on game board
   // or if timeDown = 0:00 
@@ -204,15 +204,32 @@ function gameOver(){
 }
 
 function playerWin() {
-  let a = randomOrder
-  let b = winNumberOrder
-  if(a == b){
-    document.querySelector('h1').innerText = "You Won!"
+let a = randomOrder
+let b = winNumberOrder
+let equaltyCheck = a.every(function(elem, idx){
+  return elem === b[idx]
+})
+
+if (equaltyCheck){
+  hOne.innerText = 'You Won!'
+  clearInterval(timerInterval)
+
+}
+
+
+  // for(i = 0; i < winNumberOrder.length; i++){
+  // if(winNumberOrderndo[i] = randomOrder[i]){
+  //   alert("you won")
+  // }
   }
+  
+
+    // document.querySelector('h1').innerText = "You Won!"
+  
   // if numbers in randomOrder array = to winNumberOrder
   // swow message "Congrats, you won!"
   // disable moves on a game board
 
-}
+
 
 
