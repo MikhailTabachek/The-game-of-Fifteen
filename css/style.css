@@ -176,7 +176,7 @@ input:checked + .slider:before {
   text-align: center;
   font-size: 30px;
   overflow-wrap: break-word;
-  width: 130px;
+  width: 128px;
   margin-bottom: 0;
 
 }

@@ -184,24 +184,24 @@ function renderTime(){
 function timerGoesDown(){
   let timerSeconds = 120
   timerInterval = setInterval(function() {
-  console.log(timerInterval)
   mins = Math.floor(timerSeconds / 60)
   secs = timerSeconds % 60
-    timerSeconds -= 1
-    if (secs < 10){
-      timer.innerHTML = `Time ${mins}:0${secs}`
-    } else if(secs > 10) {
-      timer.innerHTML = `Time ${mins}:${secs}`
-    } else if (mins === 0 && secs === 0){
-      hOne.innerText = "Time is Up. Please click restart"
-      clearInterval(timerInterval)
-    }
+  timerSeconds -= 1
+  if (secs < 10 && secs >= 0){
+    timer.innerHTML = `Time ${mins}:0${secs}`
+    console.log(secs)
+    console.log(timerSeconds)
+  } else if(secs > 10) {
+    timer.innerHTML = `Time ${mins}:${secs}`
+  } else {
+    gameOver()
+  }
   }, 1000)
   
 }
 
 function gameOver(){
-    hOne.innerText = "Game over! Click Restart"
+    hOne.innerText = "Game over! Click Reset"
     clearInterval(timerInterval)
     gameBoard.classList.add("disable-clicks")
 }
