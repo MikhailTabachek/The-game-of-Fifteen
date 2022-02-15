@@ -92,10 +92,12 @@ function playButton(){
   playBtn.disabled = true
   gameBoard.classList.remove("disable-clicks")
 }
-
+console.log(typeof squareIdxClicked)
 function resetButton(){
   clearArr(randomOrder)
-  document.getElementById(`sqr${squareIdxClicked}`).classList.remove("empty")
+  if(squareIdxClicked){
+    document.getElementById(`sqr${squareIdxClicked}`).classList.remove("empty")
+  }
   init()
 }
 
