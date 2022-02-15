@@ -1,2 +1,2 @@
 # The-game-of-Fifteen
-Puzzle game
+Puzzle game.
