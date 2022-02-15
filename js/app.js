@@ -16,6 +16,7 @@ let hOne = document.querySelector("h1")
 let gameBoard = document.querySelector(".game-board")
 let toggle = document.querySelector("#toggle")
 let toggleLabel = document.getElementById("toggle-label")
+let winGif = document.getElementById("win-gif")
 
 /*----------------------Event Listeners--------------------------*/
 document.querySelector("#play-btn").addEventListener("click", playButton)
@@ -44,6 +45,7 @@ function init(){
   }
   toggleState ()
   moves.innerHTML = `Moves 00${movesCount}`
+  winGif.setAttribute("hidden")
   gameBoard.classList.add("disable-clicks")
   document.getElementById("sqr15").classList.add("empty")
   shuffleArray()
@@ -215,8 +217,10 @@ let equaltyCheck = a.every(function(elem, idx){
 
 if (equaltyCheck){
   hOne.innerText = 'You Won!'
+  winGif.removeAttribute("hidden")
   gameBoard.classList.add("disable-clicks")
   clearInterval(timerInterval)
+  
   }
 }
 
