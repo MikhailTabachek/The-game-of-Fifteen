@@ -17,6 +17,7 @@ let gameBoard = document.querySelector(".game-board")
 let toggle = document.querySelector("#toggle")
 let toggleLabel = document.getElementById("toggle-label")
 let winGif = document.getElementById("win-gif")
+let loseGif = document.getElementById("lose-gif")
 
 /*----------------------Event Listeners--------------------------*/
 document.querySelector("#play-btn").addEventListener("click", playButton)
@@ -45,7 +46,6 @@ function init(){
   }
   toggleState ()
   moves.innerHTML = `Moves 00${movesCount}`
-  winGif.setAttribute("hidden")
   gameBoard.classList.add("disable-clicks")
   document.getElementById("sqr15").classList.add("empty")
   shuffleArray()
@@ -94,9 +94,11 @@ function playButton(){
   playBtn.disabled = true
   gameBoard.classList.remove("disable-clicks")
 }
-console.log(typeof squareIdxClicked)
+
 function resetButton(){
   clearArr(randomOrder)
+  winGif.setAttribute("hidden", true)
+  loseGif.setAttribute("hidden", true)
   if(squareIdxClicked){
     document.getElementById(`sqr${squareIdxClicked}`).classList.remove("empty")
   }
@@ -206,6 +208,7 @@ function gameOver(){
     hOne.innerText = "Game over! Click Reset"
     clearInterval(timerInterval)
     gameBoard.classList.add("disable-clicks")
+    loseGif.removeAttribute("hidden")
 }
 
 function playerWin() {
