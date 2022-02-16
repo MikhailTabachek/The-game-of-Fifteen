@@ -320,7 +320,7 @@ width: 650px;
     display: grid;
     justify-content: center;
     grid-template-columns: 10% 65% 10%;
-    grid-template-rows: 10% 10% 10% 50% auto;
+    grid-template-rows: 9% 9% 6% 50% auto;
     background-color: black;
   }
 
@@ -363,65 +363,63 @@ width: 650px;
     width: 70px;  
   }
     
-    .slider {
-      border-radius: 10px;
-    }
-    
-    .slider:before {
-      height: 26px;
-      width: 26px;
-    }
-    input:checked + .slider:before {
-      transform: translateX(35px);
-    }
-    
-    .level-moves-time {
-      justify-content:space-evenly;
-      width: auto;
-    }
-    
-    #davids-mode {
-      font-size: 15px;
-      padding-top: 2%;
-      text-align: center;
-      font-family: 'Fredoka One', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-      width: 100px;
-    }
-    
-    #moves {
-      font-size: 26px;
-      width: 100px;
-    }
-    
-    #timer {
-      font-size: 26px;
-      width: 100px;
-    
-    }
-    
-    .level-and-play-reset-btns{
-    margin-bottom: 5px;
+  .slider {
+    border-radius: 10px;
+  }
+  
+  .slider:before {
+    height: 26px;
+    width: 26px;
+  }
+  input:checked + .slider:before {
+    transform: translateX(35px);
+  }
+  
+  .level-moves-time {
+    justify-content:space-evenly;
     width: auto;
+  }
+  
+  #davids-mode {
+    font-size: 15px;
+    padding-top: 2%;
+    text-align: center;
+    font-family: 'Fredoka One', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100px;
+  }
+  
+  #moves {
+    font-size: 26px;
+    width: 100px;
+  }
+  
+  #timer {
+    font-size: 26px;
+    width: 100px;
+  }
+  
+  .level-and-play-reset-btns{
+  margin-bottom: 5px;
+  width: auto;
+  }
+  
+  #play-btn {
+    height: 40px;
+    font-size: 20px;
+    width: 95px;
     }
-    
-    #play-btn {
-      height: 40px;
-      font-size: 20px;
-      width: 95px;
-      }
 
-      #reset-btn {
-      height: 40px;
-      font-size: 20px;
-      width: 95px;
-      }
-    
-    
-    .number {
-      width: 95%;
-      height: 95%;
-      font-size: 5.5vh;   
-    }
+  #reset-btn {
+  height: 40px;
+  font-size: 20px;
+  width: 95px;
+  }
+  
+  .number {
+    width: 95%;
+    height: 95%;
+    font-size: 5.5vh;   
+  }
 }
 
 @media (max-width: 768px){
@@ -445,6 +443,21 @@ width: 650px;
     width: 95%;
     height: 93%;
     font-size: 5.5vh;
+  }
+
+  #easy-hard {
+    font-size: 10px;
+  }
+
+  #moves {         
+    /* padding-top: 7px; */
+    font-size: 22px;
+    width: 100px;
+  }
+
+  #timer {
+    font-size: 22px;
+    width: 100px;
   }
 }
 
