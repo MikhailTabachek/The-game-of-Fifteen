@@ -78,6 +78,7 @@ word-wrap: normal;
   height: 150px;
   margin-top: 5%;
   margin-bottom: 0;
+  transition: .5s;
 }
 
 #lose-gif{
@@ -89,6 +90,7 @@ word-wrap: normal;
   height: 150px;
   margin-top: 5%;
   margin-bottom: 0;
+  transition: .5s;
 }
 
 .switch {
@@ -212,7 +214,13 @@ width: 650px;
   border: 2px solid rgb(219, 189, 19);
   border-radius: 5px;
   width: 130px;
+  transition: .4s;
 }
+
+#play-btn:hover {
+  background-color: rgba(236, 137, 44, 0.1);
+}
+
 
 #reset-btn {
   display: flex;
@@ -226,6 +234,11 @@ width: 650px;
   border: 2px solid rgb(219, 189, 19);
   border-radius: 5px;
   width: 130px;
+  transition: .4s;
+}
+
+#reset-btn:hover {
+  background-color: rgba(236, 137, 44, 0.1);
 }
 
 
@@ -268,7 +281,11 @@ width: 650px;
   border-radius: 5px;
   margin: 5px;
   background-color: rgba(236, 137, 44, 0.1);
+  transition: .2s;
+}
 
+.number:hover {
+  background-color: rgba(226, 132, 44, 0.356);
 }
 
 .number.empty {

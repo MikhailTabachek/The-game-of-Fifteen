@@ -46,7 +46,6 @@ function init(){
   gameBoard.classList.add("disable-clicks")
   document.getElementById("sqr15").classList.add("empty")
   shuffleArray()
-  console.log(timerInterval)
 }
 
 function toggleState (){
@@ -171,8 +170,7 @@ function render(){
 
 function timerGoesUp(){
   timerIntervalUp = setInterval(tick, 1000)
-  easyLvlTimeout = setTimeout(gameOver, 300000)
-  console.log(timerIntervalUp)
+  easyLvlTimeout = setTimeout(gameOver, 301000)
 }
 
 function tick() {
