@@ -38,12 +38,9 @@ function init(){
   movesCount = 0
   secs = 0
   mins = 0
+  clearInt()
   toggleLabel.classList.remove("disable-clicks")
   playBtn.disabled = false
-  if(timerInterval) {
-    clearInterval(timerInterval)
-    timerInterval = null
-  }
   toggleState ()
   moves.innerHTML = `Moves 00${movesCount}`
   gameBoard.classList.add("disable-clicks")
@@ -58,6 +55,13 @@ function toggleState (){
   }else{
     mins = 0
     timer.innerHTML = `Time ${mins}:0${secs}`
+  }
+}
+
+function clearInt (){
+  if(timerInterval){
+    clearInterval(timerInterval)
+    timerInterval = null
   }
 }
 
@@ -206,7 +210,7 @@ function timerGoesDown(){
 
 function gameOver(){
     hOne.innerText = "Game over! Click Reset"
-    clearInterval(timerInterval)
+    clearInt()
     gameBoard.classList.add("disable-clicks")
     loseGif.removeAttribute("hidden")
 }
@@ -222,8 +226,7 @@ if (equaltyCheck){
   hOne.innerText = 'You Won!'
   winGif.removeAttribute("hidden")
   gameBoard.classList.add("disable-clicks")
-  clearInterval(timerInterval)
-  
+  clearInt()
   }
 }
 
