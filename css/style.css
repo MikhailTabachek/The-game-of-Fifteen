@@ -292,6 +292,14 @@ width: 650px;
 
 }
 
+@media (max-width: 1484px) {
+
+  #Text-Right {
+    display: none;
+  }
+
+}
+
 @media (max-width: 1250px){
   #win-gif{
     display: none;

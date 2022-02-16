@@ -3,7 +3,7 @@ const winNumberOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, null]
 
 /*--------------------- Variables (state) -----------------------*/
 let randomOrder = []
-let timeDown, timerInterval, squareIdxClicked, movesCount
+let timeDown, timerIntervalDown, timerIntervalUp, squareIdxClicked, movesCount, easyLvlTimeout
 let timeUp
 let mins
 let secs
@@ -60,12 +60,12 @@ function toggleState (){
 }
 
 function clearInt (){
-  if(timerInterval){
-    clearInterval(timerInterval)
-    timerInterval = 0
+  if(timerIntervalUp || timerIntervalDown){
+    clearInterval(timerIntervalUp)
+    clearInterval(timerIntervalDown)
+    clearInterval(easyLvlTimeout)
   }
 }
-
 
 function shuffleArray() {
   let shArr = [...winNumberOrder]
@@ -170,9 +170,9 @@ function render(){
 }
 
 function timerGoesUp(){
-  timerInterval = setInterval(tick, 1000)
-  setTimeout(gameOver, 300000)
-  console.log(timerInterval)
+  timerIntervalUp = setInterval(tick, 1000)
+  easyLvlTimeout = setTimeout(gameOver, 300000)
+  console.log(timerIntervalUp)
 }
 
 function tick() {
@@ -193,7 +193,7 @@ function renderTime(){
 
 function timerGoesDown(){
   let timerSeconds = 120
-  timerInterval = setInterval(function() {
+  timerIntervalDown = setInterval(function() {
   mins = Math.floor(timerSeconds / 60)
   secs = timerSeconds % 60
   timerSeconds -= 1
@@ -206,15 +206,16 @@ function timerGoesDown(){
   } else {
     gameOver()
   }
+  console.log(timerIntervalDown)
   }, 1000)
   
 }
 
 function gameOver(){
     hOne.innerText = "Game over! Click Reset"
-    clearInt()
     gameBoard.classList.add("disable-clicks")
     loseGif.removeAttribute("hidden")
+    clearInt()
 }
 
 function playerWin() {
