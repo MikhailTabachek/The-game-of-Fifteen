@@ -377,6 +377,7 @@ width: 650px;
     
     .level-moves-time {
       justify-content:space-evenly;
+      width: auto;
     }
     
     #davids-mode {
@@ -400,6 +401,7 @@ width: 650px;
     
     .level-and-play-reset-btns{
     margin-bottom: 5px;
+    width: auto;
     }
     
     #play-btn {
@@ -423,9 +425,18 @@ width: 650px;
 }
 
 @media (max-width: 768px){
+  body {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 7% 7% 4% auto auto;
+  }
+  
   .game-board{
-    height: 40vh;
+    height: 46vh;
     width: 1fr;
+  }
+
+  h1 {
+    font-size: 3vh;
   }
 }
 
