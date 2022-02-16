@@ -420,7 +420,7 @@ width: 650px;
     .number {
       width: 95%;
       height: 95%;
-      font-size: 5vh;   
+      font-size: 5.5vh;   
     }
 }
 
@@ -431,12 +431,20 @@ width: 650px;
   }
   
   .game-board{
-    height: 46vh;
+    height: auto;
     width: 1fr;
+    padding: 1px;
+    border-height: auto;
   }
 
   h1 {
     font-size: 3vh;
+  }
+
+  .number {
+    width: 95%;
+    height: 93%;
+    font-size: 5.5vh;
   }
 }
 
