@@ -46,6 +46,7 @@ function init(){
   gameBoard.classList.add("disable-clicks")
   document.getElementById("sqr15").classList.add("empty")
   shuffleArray()
+  console.log(timerInterval)
 }
 
 function toggleState (){
@@ -61,7 +62,7 @@ function toggleState (){
 function clearInt (){
   if(timerInterval){
     clearInterval(timerInterval)
-    timerInterval = null
+    timerInterval = 0
   }
 }
 
@@ -106,6 +107,7 @@ function resetButton(){
   if(squareIdxClicked){
     document.getElementById(`sqr${squareIdxClicked}`).classList.remove("empty")
   }
+  hOne.innerText = "The Game of Fifteen"
   init()
 }
 
@@ -123,14 +125,14 @@ function handleClick(sqId) {
 function findNull(){
   currentArrState = randomOrder
   const toSwap = squareIdxClicked
-  if(randomOrder[squareIdxClicked - 1] === null) {
+  if(randomOrder[squareIdxClicked - 1] === null && squareIdxClicked !== 4 && squareIdxClicked !== 8 && squareIdxClicked !== 12) {
     document.getElementById(`sqr${toSwap -1}`).classList.remove("empty")
     currentArrState[squareIdxClicked - 1] = currentArrState[squareIdxClicked]
     currentArrState[toSwap] = null
     randomOrder = currentArrState
     document.getElementById(`sqr${toSwap}`).classList.add("empty")
     movesCount += 1
-  } else if (randomOrder[squareIdxClicked + 1] === null) {
+  } else if (randomOrder[squareIdxClicked + 1] === null && squareIdxClicked !== 3 && squareIdxClicked !== 7 && squareIdxClicked !== 11) {
     document.getElementById(`sqr${toSwap +1}`).classList.remove("empty")
     currentArrState[squareIdxClicked + 1] = currentArrState[squareIdxClicked]
     currentArrState[toSwap] = null
