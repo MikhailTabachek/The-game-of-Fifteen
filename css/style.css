@@ -34,12 +34,6 @@ h1 {
   width: 650px;
 }
 
-/* #Text-Left {
-grid-row: 5;
-grid-column: 2;
-color: rgb(0, 0, 0);
-
-} */
 
 #how-to-play {
   display: flex;
@@ -476,7 +470,7 @@ width: 650px;
   }
 
   #davids-mode {
-    font-size: ;
+    font-size: 16px;
   }
 
   #play-btn {
