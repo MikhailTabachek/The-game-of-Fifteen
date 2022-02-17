@@ -183,9 +183,9 @@ input:checked + .slider:before {
   color: rgb(235, 126, 25);
   font-family: 'Fredoka One', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   text-align: center;
-  font-size: 30px;
+  font-size: 31px;
   overflow-wrap: break-word;
-  width: 128px;
+  width: 127px;
   margin-bottom: 0;
 
 }
@@ -285,7 +285,7 @@ width: 650px;
 }
 
 .number:hover {
-  background-color: rgba(226, 132, 44, 0.356);
+  background-color: rgba(177, 169, 162, 0.356);
 }
 
 .number.empty {
@@ -307,12 +307,22 @@ width: 650px;
   font-size: 20px;
   }
 
+  /* .number {
+    max-height: fit-content;
+
+  } */
+
 }
 
 @media (max-width: 1484px) {
 
   #Text-Right {
     display: none;
+  }
+
+  .number {
+    max-height: fit-content;
+    /* font-size: 70px; */
   }
 
 }
@@ -331,6 +341,11 @@ width: 650px;
 
   #Text-Right {
   font-size: 15px;
+  }
+
+  .number {
+    max-height: fit-content;
+    /* font-size: large; */
   }
 
 }
@@ -375,6 +390,7 @@ width: 650px;
 
   .game-board {
     width: 100%;
+    min-height: 550px;
     height: auto;
   }
 
@@ -439,9 +455,9 @@ width: 650px;
   }
   
   .number {
-    width: 95%;
-    height: 95%;
-    font-size: 8vh; 
+    width:auto;
+    height:auto;
+    font-size: 100%; 
   }
 
   #easy-hard {
@@ -459,6 +475,7 @@ width: 650px;
     height: auto;
     width: 1fr;
     padding: 1px;
+    min-height: auto;
   }
 
   h1 {
@@ -469,7 +486,7 @@ width: 650px;
   .number {
     width: 95%;
     height: 93%;
-    font-size: 5.5vh;
+    font-size: 100%;
   }
 
   #easy-hard {

@@ -36,6 +36,17 @@ Once the sketch was finished, I've structured and wrote a pseudo code. It was my
 
 It took me four days to get to the point, when the game was fully functional and ready to play. Then it was presented to my classmates, and they found few bugs. I was fixing them on the go, after every reported problem. This helped me to make user experience flawless. I hope you will enjoy playing this game. 
 
+
+To build the game I used:
+
+
+![](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)
+
+![](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+
+![](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+
+
 What I've learned after I built this game:
 
 * Detailed planning is very important before starting any project

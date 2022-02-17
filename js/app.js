@@ -59,7 +59,7 @@ function toggleState (){
 }
 
 function clearInt (){
-  if(timerIntervalUp || timerIntervalDown){
+  if(timerIntervalUp || timerIntervalDown || easyLvlTimeout){
     clearInterval(timerIntervalUp)
     clearInterval(timerIntervalDown)
     clearInterval(easyLvlTimeout)
@@ -197,14 +197,11 @@ function timerGoesDown(){
   timerSeconds -= 1
   if (secs < 10 && secs >= 0){
     timer.innerHTML = `Time ${mins}:0${secs}`
-    console.log(secs)
-    console.log(timerSeconds)
   } else if(secs > 10) {
     timer.innerHTML = `Time ${mins}:${secs}`
-  } else {
+  } else if(timerSeconds < 0) {
     gameOver()
   }
-  console.log(timerIntervalDown)
   }, 1000)
   
 }
