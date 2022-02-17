@@ -1,12 +1,9 @@
 body {
-display: grid;
-margin: 0;
-grid-template-columns: 1fr 1fr 1fr;
-grid-template-rows: 12% 9% 8% 70% auto;
-font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-/* justify-content: center; */
-/* grid-template-columns: 1fr 1fr 1fr; */
-/* grid-template-rows: 1fr 1fr 1fr 4fr 1fr 1fr; */
+  display: grid;
+  margin: 0;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 12% 9% 8% 70% auto;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #background {
@@ -34,7 +31,6 @@ h1 {
   width: 650px;
 }
 
-
 #how-to-play {
   display: flex;
   grid-column: 1 / 2;
@@ -58,15 +54,14 @@ h1 {
 
 #Text-Right {
   font-family: 'Akaya Telivigala', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-font-size: 25px;
-padding: 5px 30px 10px 30px;
-color: aliceblue;
-/* display: flex; */
-grid-column: 3 / 4;
-grid-row: 2 / 5;
-text-align: center;
-justify-content: center;
-word-wrap: normal;
+  font-size: 25px;
+  padding: 5px 30px 10px 30px;
+  color: aliceblue;
+  grid-column: 3 / 4;
+  grid-row: 2 / 5;
+  text-align: center;
+  justify-content: center;
+  word-wrap: normal;
 }
 
 #win-gif {
@@ -191,15 +186,15 @@ input:checked + .slider:before {
 }
 
 .level-and-play-reset-btns{
-margin: 0;
-display: flex;
-grid-column: 2 / 3 ;
-grid-row: 3 / 4;
-justify-content: space-around;
-align-items: center;
-margin-bottom: 5px;
-margin-top: 5px;
-width: 650px;
+  margin: 0;
+  display: flex;
+  grid-column: 2 / 3 ;
+  grid-row: 3 / 4;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  width: 650px;
 }
 
 #play-btn {
@@ -221,7 +216,6 @@ width: 650px;
   background-color: rgba(236, 137, 44, 0.1);
 }
 
-
 #reset-btn {
   display: flex;
   justify-content: center;
@@ -240,7 +234,6 @@ width: 650px;
 #reset-btn:hover {
   background-color: rgba(236, 137, 44, 0.1);
 }
-
 
 #number-of-moves {
   color: rgb(235, 126, 25);
@@ -298,33 +291,21 @@ width: 650px;
 }
 
 @media (max-width: 1580px){
-
   #Text-Left {
-  font-size: 20px;
+    font-size: 20px;
   }
-
   #Text-Right {
-  font-size: 20px;
+    font-size: 20px;
   }
-
-  /* .number {
-    max-height: fit-content;
-
-  } */
-
 }
 
-@media (max-width: 1484px) {
-
+  @media (max-width: 1484px) {
   #Text-Right {
     display: none;
   }
-
   .number {
     max-height: fit-content;
-    /* font-size: 70px; */
   }
-
 }
 
 @media (max-width: 1250px){
@@ -334,20 +315,15 @@ width: 650px;
   #lose-gif{
     display: none;
   }
-
   #Text-Left {
-  font-size: 15px;
+    font-size: 15px;
   }
-
   #Text-Right {
-  font-size: 15px;
+    font-size: 15px;
   }
-
   .number {
     max-height: fit-content;
-    /* font-size: large; */
   }
-
 }
 
 @media (max-width: 1044px){
@@ -358,7 +334,6 @@ width: 650px;
     grid-template-rows: 9% 7% 6% 50% auto;
     background-color: black;
   }
-
   h1 {
     margin-top: 5px;
     width:auto;
@@ -372,41 +347,32 @@ width: 650px;
     height: 60vh;
     width: 1fr;
   }
-
   #background{
     width: 100vh;
   }
-
   #Text-Left {
     font-size: 20px;
     grid-column: 2;
     grid-row: 5;
-
-    }
-  
+  }
   #Text-Right {
     display:none;
   }
-
   .game-board {
     width: 100%;
     min-height: 550px;
     height: auto;
   }
-
   #win-gif {
     display: none;
   }
-    
   .switch {
     height: 34px;
     width: 70px;  
   }
-    
   .slider {
     border-radius: 10px;
   }
-  
   .slider:before {
     height: 26px;
     width: 26px;
@@ -414,52 +380,43 @@ width: 650px;
   input:checked + .slider:before {
     transform: translateX(35px);
   }
-  
   .level-moves-time {
     justify-content:space-evenly;
     width: auto;
   }
-  
   #davids-mode {
     font-size: 16px;
     padding-top: 0;
     text-align: center;
     width: 130px;
   }
-  
   #moves {
     font-size: 24px;
     width: auto;
   }
-  
   #timer {
     font-size: 26px;
     width: auto;
   }
-  
   .level-and-play-reset-btns{
-  margin-bottom: 5px;
-  width: auto;
+    margin-bottom: 5px;
+    width: auto;
   }
-  
   #play-btn {
     height: 40px;
     font-size: 20px;
     width: 95px;
     }
-
   #reset-btn {
-  height: 40px;
-  font-size: 20px;
-  width: 95px;
+    height: 40px;
+    font-size: 20px;
+    width: 95px;
   }
-  
   .number {
     width:auto;
     height:auto;
     font-size: 100%; 
   }
-
   #easy-hard {
     font-size: 16px;
   }
@@ -467,63 +424,50 @@ width: 650px;
 
 @media (max-width: 768px){
   body {
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 5% 5% 4% auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 5% 5% 4% auto auto;
   }
-  
   .game-board{
     height: auto;
     width: 1fr;
     padding: 1px;
     min-height: auto;
   }
-
   h1 {
     padding-top: 3px;
     font-size: 18px;
   }
-
   .number {
     width: 95%;
     height: 93%;
     font-size: 100%;
   }
-
   #easy-hard {
     font-size: 3vh;
   }
-
   #moves {
     font-size: 16px;
     width: 100px;
   }
-
   #timer {
     font-size: 20px;
     width: 100px;
   }
-
   #easy-hard {
     font-size: 15px;
   }
-
   .slider:before {
     height: 26px;
   }
-
   #davids-mode {
     font-size: 16px;
   }
-
   #play-btn {
     height: auto;
   }
-  
-  
   #reset-btn{
   height: auto;
   }
-
 }
 
 

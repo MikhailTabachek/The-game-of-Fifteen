@@ -2,6 +2,7 @@
 const winNumberOrder = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, null]
 
 /*--------------------- Variables (state) -----------------------*/
+
 let randomOrder = []
 let timeDown, timerIntervalDown, timerIntervalUp, squareIdxClicked, movesCount, easyLvlTimeout
 let timeUp
@@ -9,6 +10,7 @@ let mins
 let secs
 
 /*-------------------Cached Element References-------------------*/
+
 let timer = document.querySelector("#timer")
 let numberOfMoves = document.querySelector("#moves")
 let playBtn = document.querySelector("#play-btn")
@@ -20,18 +22,18 @@ let winGif = document.getElementById("win-gif")
 let loseGif = document.getElementById("lose-gif")
 
 /*----------------------Event Listeners--------------------------*/
+
 document.querySelector("#play-btn").addEventListener("click", playButton)
-
 document.querySelector("#reset-btn").addEventListener("click", resetButton)
-
 document.querySelectorAll(".number").forEach(square => {
   square.addEventListener("click", handleClick)
-});
-
+})
 toggle.addEventListener("click", toggleState)
 
 /*-------------------------Functions-----------------------------*/
+
 init()
+
 function init(){
   randomOrder = []
   timeUp = 0
@@ -170,7 +172,7 @@ function render(){
 
 function timerGoesUp(){
   timerIntervalUp = setInterval(tick, 1000)
-  easyLvlTimeout = setTimeout(gameOver, 301000)
+  easyLvlTimeout = setTimeout(gameOver, 300100)
 }
 
 function tick() {
