@@ -198,8 +198,10 @@ function timerGoesDown(){
   secs = timerSeconds % 60
   timerSeconds -= 1
   if (secs < 10 && secs >= 0){
+    playerWin()
     timer.innerHTML = `Time ${mins}:0${secs}`
   } else if(secs > 10) {
+    playerWin()
     timer.innerHTML = `Time ${mins}:${secs}`
   } else if(timerSeconds < 0) {
     gameOver()
